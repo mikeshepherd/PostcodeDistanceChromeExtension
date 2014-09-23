@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
 
-    "name": "Postcode Distance",
+    "name": "Distance to Postcode",
     "description": "This extension displays the distance to a postcode form your house",
     "version": "1.0",
 
