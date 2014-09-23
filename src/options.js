@@ -1,18 +1,15 @@
 function save_options() {
     var unit = $('input[name="unit"]:checked').val();
     var home = $('#home').val();
-    console.log("Saving");
-    console.log(unit);
-    console.log(home);
     chrome.storage.sync.set({
         unit: unit,
         home: home
-    }, function() {
+    }, function () {
         // Update status to let user know options were saved.
-        var status = document.getElementById('status');
-        status.textContent = 'Options saved.';
-        setTimeout(function() {
-            status.textContent = '';
+        var status = $('#status');
+        status.text('Options saved.');
+        setTimeout(function () {
+            status.text('');
         }, 750);
     });
 }
@@ -24,11 +21,10 @@ function restore_options() {
     chrome.storage.sync.get({
         unit: 'imperial',
         home: ''
-    }, function(items) {
-        $('input:radio[name="unit"][value='+items.unit+']').prop('checked', true);
+    }, function (items) {
+        $('input:radio[name="unit"][value=' + items.unit + ']').prop('checked', true);
         $('#home').val(items.home);
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+$('#save').bind('click', save_options);

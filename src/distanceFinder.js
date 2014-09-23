@@ -1,8 +1,8 @@
 var DistanceFinder = function () {
-    function cleanArray(actual){
+    function cleanArray(actual) {
         var newArray = [];
-        for(var i = 0; i<actual.length; i++){
-            if (actual[i]){
+        for (var i = 0; i < actual.length; i++) {
+            if (actual[i]) {
                 newArray.push(actual[i]);
             }
         }
@@ -52,3 +52,21 @@ chrome.extension.onMessage.addListener(
         return true;
     }
 );
+
+
+// Called when the user clicks on the browser action icon.
+chrome.browserAction.onClicked.addListener(function () {
+    var optionsUrl = chrome.extension.getURL('src/options.html');
+    chrome.tabs.query({}, function (extensionTabs) {
+        var found = false;
+        for (var i = 0; i < extensionTabs.length; i++) {
+            if (optionsUrl == extensionTabs[i].url) {
+                found = true;
+                chrome.tabs.update(extensionTabs[i].id, {"selected": true});
+            }
+        }
+        if (found == false) {
+            chrome.tabs.create({url: "src/options.html"});
+        }
+    });
+});

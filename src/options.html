@@ -2,22 +2,85 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Configure Distance to Postcode Extension</title>
+
+    <style>
+        /* Clone the look and feel of "chrome://" pages. */
+        body {
+            margin: 10px;
+            font: 84% Arial, sans-serif
+        }
+
+        h1 {
+            font-size: 156%
+        }
+
+        h1 img {
+            margin: 1px 5px 0 1px;
+            vertical-align: middle
+        }
+
+        h2 {
+            border-top: 1px solid #9cc2ef;
+            background-color: #ebeff9;
+            padding: 3px 5px;
+            font-size: 100%
+        }
+
+        table {
+            font-size: 100%;
+        }
+
+        table.teams label {
+            color: #777;
+        }
+
+        th {
+            margin-bottom: 2px;
+            color: #777;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        form {
+            margin-left: 10px;
+        }
+    </style>
 
     <script src="../lib/jquery.min.js"></script>
+
 </head>
 <body>
-Unit of measurement:
-<label for="imperial">Miles</label><input type="radio" name="unit" id="imperial" value="imperial" />
-<label for="metric">Kilometers</label><input type="radio" name="unit" id="metric" value="metric" />
+<h1>
+    <img src="../images/icon64.png" alt="Distance to Postcode"/>
+    Configure Distance to Postcode Extension
+</h1>
 
-<br />
-<label for="home">Start postcode:</label><input id="home" type="text" name="home"/>
+<h2>Options</h2>
+
+<form id="options">
+    <label>Unit of measurement:</label><br/>
+    <table border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <td><input type="radio" name="unit" id="imperial" value="imperial"/><label for="imperial">Miles</label></td>
+            <td><input type="radio" name="unit" id="metric" value="metric"/><label for="metric">Kilometers</label></td>
+        </tr>
+        <tr>
+            <td><label for="home">Start postcode:</label><input id="home" type="text" name="home"/></td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+
+</form>
 
 <div id="status"></div>
 <button id="save">Save</button>
 
 <script src="options.js"></script>
-
 </body>
 </html>
